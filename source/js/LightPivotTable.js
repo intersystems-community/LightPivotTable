@@ -314,7 +314,10 @@ LightPivotTable.prototype.tryDrillThrough = function (filters) {
     // clone dataSource config object
     for (var i in _.CONFIG.dataSource) { ds[i] = _.CONFIG.dataSource[i]; }
 
-    ds.basicMDX = this.mdxParser.drillThrough(this.dataSource.BASIC_MDX, filters)
+    // get custom listing
+    const customListing = this.CONFIG.controls?.find(c => c.action === 'showListing')?.targetProperty;
+
+    ds.basicMDX = this.mdxParser.drillThrough(this.dataSource.BASIC_MDX, filters, customListing)
         || this.dataSource.basicMDX;
 
     oldDataSource = this.dataSource;

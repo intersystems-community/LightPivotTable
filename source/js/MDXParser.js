@@ -121,13 +121,17 @@ MDXParser.prototype.drillDown = function (mdx, filter, expression) {
  * @param {string} basicMDX
  * @param {string[]} [filters]
  */
-MDXParser.prototype.drillThrough = function (basicMDX, filters) {
+MDXParser.prototype.drillThrough = function (basicMDX, filters, customListing) {
 
     var cubeAndFilters = basicMDX.slice(basicMDX.lastIndexOf("FROM ")),
         query = "DRILLTHROUGH SELECT " + cubeAndFilters;
 
     for (var i in filters) {
         query = this.applyFilter(query, filters[i]);
+    }
+
+    if (customListing) {
+        query += ` %LISTING [${customListing}]`;
     }
 
     return query;
