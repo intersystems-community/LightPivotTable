@@ -25,6 +25,9 @@
     "test": "node test/testServer.js",
     "build": "gulp"
   },
+  "overrides": {
+    "graceful-fs": "^4.2.10"
+  },
   "keywords": [
     "pivot",
     "table",
