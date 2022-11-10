@@ -93,8 +93,19 @@ MDXParser.prototype.drillDown = function (mdx, filter, expression) {
         return ""; // DrillDown is impossible (no "1" dimension)
     }
 
-    dimensions[index] =
-        this.prependNonEmpty(expression || this.makeSetExpressionFromFilter(filter));
+    let order = '';
+    const orderMatch = dimensions[index].match(/ORDER\((.*?)\,/);
+
+    if (orderMatch && orderMatch[0]) {
+        order = orderMatch[0];
+    }
+
+    if (order) {
+        dimensions[index] = (expression || dimensions[index]).replace(order, 'ORDER(' + this.makeSetExpressionFromFilter(filter) + ',');
+    } else {
+        dimensions[index] =
+            this.prependNonEmpty(expression || this.makeSetExpressionFromFilter(filter));
+    }
     for (var i in dimensions) {
         if (dimensions[i].length === 1) { // "0" || "1"
             dimensions[i](parseInt(i), 1);

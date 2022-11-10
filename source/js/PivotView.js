@@ -1393,7 +1393,7 @@ PivotView.prototype.renderRawData = function (data) {
             formatContent(
                 rawData[y][x].value,
                 div,
-                (columnProps[x] && columnProps[x].format) || (rowProps[y] && rowProps[y].format)
+                (rowProps[y] && rowProps[y].format) || columnProps[x].format
             );
             if (
                 colorScale

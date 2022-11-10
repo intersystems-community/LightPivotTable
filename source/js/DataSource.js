@@ -102,7 +102,7 @@ DataSource.prototype._convert = function (data) {
         o = {
             dimensions: [
                 data["Cols"][0]["tuples"],
-                data["Cols"][1]["tuples"]
+                data["Cols"][1] ? data["Cols"][1]["tuples"] : [{caption:""}]
             ],
             dataArray: data["Data"],
             info: data["Info"]
