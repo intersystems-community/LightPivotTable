@@ -369,7 +369,7 @@ PivotView.prototype._rowClickHandler = function (rowIndex, cellData) {
         var d = this.controller.getRowsValues([rowIndex])[0].slice(
             this.controller.dataController.getData().info.leftHeaderColumnsNumber
         );
-        res = this.controller.CONFIG.triggers["rowClick"](rowIndex, d);
+        res = this.controller.CONFIG.triggers["rowClick"](rowIndex, d, cellData);
     }
     if (res !== false)
         this.controller.tryDrillDown(cellData.source.path);

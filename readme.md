@@ -56,7 +56,7 @@ var setup = { // Object that contain settings. Properties in brackets can be mis
             // triggers when row selected in listing:
             , rowSelect: function (row, rowData) { console.log("Row #", row, rowData); }
             // if rowClick callback returns boolean false, DrillDown won't be performed.
-            , rowClick: function (row, rowData) { console.log(row, rowData); }
+            , rowClick: function (row, rowData, cellData) { console.log(row, rowData, cellData); }
             , contentRendered: function () {}
             , cellSelected: function ({ x: Number, y: Number, leftHeaderColumnsNumber: Number, topHeaderRowsNumber: Number }) {
                 return false; // return false to block default click action
