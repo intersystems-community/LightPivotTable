@@ -52,6 +52,12 @@ PivotLocale.prototype.LOCALES = [
      "en": "No data to display.",
      "de": "Keine Daten zum anzeigen.",
      "cs": "Žádná data k zobrazení"
+ },
+ { // 5
+    "ru": "% от Всего",
+    "en": "% of Total",
+    "de": "% des Summe",
+    "cs": "% z Celkem"
  }
 ];
 
